@@ -1,0 +1,67 @@
+{
+  "name": "integreat-source-couchdb",
+  "version": "0.1.0",
+  "description": "CouchDB/Cloudant support for Integreat",
+  "author": "Kjell-Morten Bratsberg Thorsen <post@kjellmorten.no> (http://kjellmorten.no)",
+  "license": "ISC",
+  "keywords": [
+    "integreat",
+    "couchdb",
+    "cloudant"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "npm run lint && NODE_ENV=test nyc --reporter=text-summary ava",
+    "dev": "NODE_ENV=test ava --watch",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "nyc:report": "nyc report",
+    "lint": "standard"
+  },
+  "ava": {
+    "files": [
+      "lib/**/*-test.js",
+      "tests/**/*-test.js"
+    ],
+    "source": [
+      "./index.js",
+      "lib/**/!(*-test).js"
+    ],
+    "babel": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "8.4"
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "**/*-test.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjellmorten/integreat-source-couchdb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kjellmorten/integreat-source-couchdb/issues"
+  },
+  "homepage": "https://github.com/kjellmorten/integreat-source-couchdb#readme",
+  "engines": {
+    "node": "8.4.x",
+    "npm": ">= 4.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-preset-env": "^1.6.0",
+    "coveralls": "^2.13.1",
+    "nyc": "^11.2.1",
+    "standard": "^10.0.3"
+  }
+}
