@@ -57,11 +57,18 @@
     "node": "8.4.x",
     "npm": ">= 4.0.0"
   },
+  "dependencies": {
+    "request": "^2.82.0",
+    "request-promise-native": "^1.0.5"
+  },
   "devDependencies": {
     "ava": "^0.22.0",
     "babel-preset-env": "^1.6.0",
     "coveralls": "^2.13.1",
+    "debug": "^3.0.1",
+    "nock": "^9.0.20",
     "nyc": "^11.2.1",
+    "sinon": "^3.3.0",
     "standard": "^10.0.3"
   }
 }
