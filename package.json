@@ -58,16 +58,16 @@
     "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "request": "^2.82.0",
+    "request": "^2.83.0",
     "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "ava": "^0.22.0",
     "babel-preset-env": "^1.6.0",
-    "coveralls": "^2.13.1",
-    "debug": "^3.0.1",
-    "integreat": "^0.4.0",
-    "nock": "^9.0.20",
+    "coveralls": "^2.13.3",
+    "debug": "^3.1.0",
+    "integreat": "^0.4.1",
+    "nock": "^9.0.22",
     "nyc": "^11.2.1",
     "sinon": "^3.3.0",
     "standard": "^10.0.3"
