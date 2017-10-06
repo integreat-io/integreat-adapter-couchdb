@@ -13,7 +13,7 @@ const sources = [{
   endpoints: {
     getOne: '/{id}',
     setOne: '/{id}',
-    getRevs: {uri: '/_all_docs{?keys=ids|wrap([, ", ", ]),include_docs=includeDocs?}', path: 'rows[]'}
+    getRevs: {uri: '/_all_docs{?include_docs=includeDocs?}', path: 'rows[]', method: 'POST'}
   },
   mappings: {
     '*': {}
@@ -67,11 +67,10 @@ test('should send to couchdb', async (t) => {
 
 test('should get rev before sending to couchdb', async (t) => {
   const scope = nock('http://test.api')
+    .post('/_all_docs?include_docs=false', {keys: ['article3']})
+      .reply(200, {rows: [{id: 'article3', key: 'article3', value: {rev: '1-8371734'}}]})
     .put('/article3', (body) => body._rev === '1-8371734')
       .reply(201, {_id: 'article3', _rev: '2-3139483'})
-    .get('/_all_docs')
-    .query({keys: '["article3"]', include_docs: false})
-      .reply(200, {rows: [{id: 'article3', key: 'article3', value: {rev: '1-8371734'}}]})
   const resources = couchdb(integreat.resources())
   const great = integreat(defs, resources)
   const action = {type: 'SET_ONE', payload: {data: {id: 'article3', type: 'article'}}}
