@@ -10,11 +10,10 @@ const sources = [{
   id: 'store',
   adapter: 'json',
   baseUri: 'http://test.api',
-  endpoints: {
-    getOne: '/{id}',
-    setOne: '/{id}',
-    getRevs: {uri: '/_all_docs{?include_docs=includeDocs?}', path: 'rows[]', method: 'POST'}
-  },
+  endpoints: [
+    {scope: 'member', options: {uri: '/{id}'}},
+    {id: 'getRevs', options: {uri: '/_all_docs{?include_docs=includeDocs?}', path: 'rows[]', method: 'POST'}}
+  ],
   mappings: {
     '*': {}
   },
@@ -44,12 +43,12 @@ test('should retrieve from couchdb', async (t) => {
       .reply(200, {_id: 'article1', type: 'article'})
   const resources = couchdb(integreat.resources())
   const great = integreat(defs, resources)
-  const action = {type: 'GET_ONE', payload: {id: 'article1', type: 'article'}}
+  const action = {type: 'GET', payload: {id: 'article1', type: 'article'}}
 
   const ret = await great.dispatch(action)
 
-  t.truthy(ret.data)
-  t.is(ret.data.id, 'article1')
+  t.true(Array.isArray(ret.data))
+  t.is(ret.data[0].id, 'article1')
 })
 
 test('should send to couchdb', async (t) => {
@@ -58,10 +57,12 @@ test('should send to couchdb', async (t) => {
       .reply(201, {_id: 'article2', _rev: '1-8371734'})
   const resources = couchdb(integreat.resources())
   const great = integreat(defs, resources)
-  const action = {type: 'SET_ONE', payload: {data: {id: 'article2', type: 'article'}}}
+  const action = {type: 'SET', payload: {data: {id: 'article2', type: 'article'}}}
 
-  await great.dispatch(action)
+  const ret = await great.dispatch(action)
 
+  t.truthy(ret)
+  t.is(ret.status, 'ok', ret.error)
   t.true(scope.isDone())
 })
 
@@ -73,9 +74,11 @@ test('should get rev before sending to couchdb', async (t) => {
       .reply(201, {_id: 'article3', _rev: '2-3139483'})
   const resources = couchdb(integreat.resources())
   const great = integreat(defs, resources)
-  const action = {type: 'SET_ONE', payload: {data: {id: 'article3', type: 'article'}}}
+  const action = {type: 'SET', payload: {data: {id: 'article3', type: 'article'}}}
 
-  await great.dispatch(action)
+  const ret = await great.dispatch(action)
 
+  t.truthy(ret)
+  t.is(ret.status, 'ok', ret.error)
   t.true(scope.isDone())
 })

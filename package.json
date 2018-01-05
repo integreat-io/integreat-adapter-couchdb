@@ -66,7 +66,7 @@
     "babel-preset-env": "^1.6.0",
     "coveralls": "^2.13.3",
     "debug": "^3.1.0",
-    "integreat": "^0.4.1",
+    "integreat": "^0.6.0",
     "nock": "^9.0.22",
     "nyc": "^11.2.1",
     "sinon": "^3.3.0",
