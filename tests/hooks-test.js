@@ -1,6 +1,6 @@
 import test from 'ava'
 import nock from 'nock'
-import integreat from 'integreat'
+import integreat from '../../integreat'
 
 import couchdb from '..'
 
@@ -14,11 +14,13 @@ const sources = [{
     {scope: 'member', options: {uri: '/{id}'}},
     {id: 'getRevs', options: {uri: '/_all_docs{?include_docs=includeDocs?}', path: 'rows[]', method: 'POST'}}
   ],
-  mappings: {
-    '*': {}
-  },
   beforeSerialize: 'couchdb-beforeSerialize',
   afterNormalize: 'couchdb-afterNormalize'
+}]
+
+const mappings = [{
+  type: 'article',
+  source: 'store'
 }]
 
 const datatypes = [{
@@ -33,7 +35,7 @@ test.after((t) => {
   nock.restore()
 })
 
-const defs = {sources, datatypes}
+const defs = {sources, datatypes, mappings}
 
 // Tests
 
