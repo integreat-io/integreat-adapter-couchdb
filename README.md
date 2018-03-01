@@ -63,6 +63,10 @@ an endpoint for getting `_rev` for existing documents. The `baseUri` should
 include the host and the database name, so that it can append `_all_docs`
 directly after. Ending `/` is optional.
 
+It's also important that the path on each endpoint points to items, as the
+`couchdb` adapter will override `normalize` and `serialize` methods to alter
+the items. These overrides is based on the path pointing to the actual items.
+
 Other than that, these endpoints are examples of a typical way to configure a
 CouchDb database as a store for Integreat.
 
