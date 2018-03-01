@@ -8,14 +8,11 @@ import couchdb from '..'
 
 const sources = [{
   id: 'store',
-  adapter: 'json',
+  adapter: 'couchdb',
   baseUri: 'http://test.api',
   endpoints: [
-    {scope: 'member', options: {uri: '/{id}'}},
-    {id: 'getRevs', options: {uri: '/_all_docs{?include_docs=includeDocs?}', path: 'rows[]', method: 'POST'}}
-  ],
-  beforeSerialize: 'couchdb-beforeSerialize',
-  afterNormalize: 'couchdb-afterNormalize'
+    {scope: 'member', options: {uri: '/{id}'}}
+  ]
 }]
 
 const mappings = [{
@@ -31,7 +28,7 @@ const datatypes = [{
   }
 }]
 
-test.after((t) => {
+test.after.always((t) => {
   nock.restore()
 })
 
@@ -70,7 +67,7 @@ test('should send to couchdb', async (t) => {
 
 test('should get rev before sending to couchdb', async (t) => {
   const scope = nock('http://test.api')
-    .post('/_all_docs?include_docs=false', {keys: ['article3']})
+    .post('/_all_docs', {keys: ['article3']})
       .reply(200, {rows: [{id: 'article3', key: 'article3', value: {rev: '1-8371734'}}]})
     .put('/article3', (body) => body._rev === '1-8371734')
       .reply(201, {_id: 'article3', _rev: '2-3139483'})
