@@ -26,19 +26,7 @@
     "source": [
       "./index.js",
       "lib/**/!(*-test).js"
-    ],
-    "babel": {
-      "presets": [
-        [
-          "env",
-          {
-            "targets": {
-              "node": "8.4"
-            }
-          }
-        ]
-      ]
-    }
+    ]
   },
   "nyc": {
     "exclude": [
@@ -62,14 +50,14 @@
     "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "debug": "^3.1.0",
-    "integreat": "^0.6.0",
-    "nock": "^9.1.6",
+    "integreat": "^0.5.0",
+    "nock": "^9.2.3",
     "nyc": "^11.4.1",
-    "sinon": "^4.1.4",
-    "standard": "^10.0.3"
+    "sinon": "^4.4.2",
+    "standard": "^11.0.0"
   }
 }
