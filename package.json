@@ -1,6 +1,6 @@
 {
-  "name": "integreat-source-couchdb",
-  "version": "0.1.0",
+  "name": "integreat-adapter-couchdb",
+  "version": "0.2.0",
   "description": "CouchDB/Cloudant support for Integreat",
   "author": "Kjell-Morten Bratsberg Thorsen <post@kjellmorten.no> (http://kjellmorten.no)",
   "license": "ISC",
@@ -35,14 +35,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kjellmorten/integreat-source-couchdb.git"
+    "url": "git+https://github.com/integreat-io/integreat-adapter-couchdb.git"
   },
   "bugs": {
-    "url": "https://github.com/kjellmorten/integreat-source-couchdb/issues"
+    "url": "https://github.com/integreat-io/integreat-adapter-couchdb/issues"
   },
-  "homepage": "https://github.com/kjellmorten/integreat-source-couchdb#readme",
+  "homepage": "https://github.com/integreat-io/integreat-adapter-couchdb#readme",
   "engines": {
-    "node": "8.4.x",
+    "node": ">= 8.6",
     "npm": ">= 4.0.0"
   },
   "dependencies": {
@@ -54,7 +54,7 @@
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "debug": "^3.1.0",
-    "integreat": "^0.5.0",
+    "integreat": "^0.6.0",
     "nock": "^9.2.3",
     "nyc": "^11.4.1",
     "sinon": "^4.4.2",

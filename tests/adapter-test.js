@@ -1,6 +1,6 @@
 import test from 'ava'
 import nock from 'nock'
-import integreat from '../../integreat'
+import integreat from 'integreat'
 
 import couchdb from '..'
 
