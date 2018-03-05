@@ -43,7 +43,7 @@
   "homepage": "https://github.com/integreat-io/integreat-adapter-couchdb#readme",
   "engines": {
     "node": ">= 8.6",
-    "npm": ">= 4.0.0"
+    "npm": ">= 5.0.0"
   },
   "dependencies": {
     "request": "^2.83.0",

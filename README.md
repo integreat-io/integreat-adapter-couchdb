@@ -6,7 +6,6 @@ as sources.
 
 [![Build Status](https://travis-ci.org/integreat-io/integreat-adapter-couchdb.svg?branch=master)](https://travis-ci.org/integreat-io/integreat-adapter-couchdb)
 [![Coverage Status](https://coveralls.io/repos/github/integreat-io/integreat-adapter-couchdb/badge.svg?branch=master)](https://coveralls.io/github/integreat-io/integreat-adapter-couchdb?branch=master)
-[![Dependency Status](https://dependencyci.com/github/integreat-io/integreat-adapter-couchdb/badge)](https://dependencyci.com/github/integreat-io/integreat-adapter-couchdb)
 
 ## Getting started
 
