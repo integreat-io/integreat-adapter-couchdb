@@ -1,6 +1,6 @@
 {
   "name": "integreat-adapter-couchdb",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CouchDB/Cloudant support for Integreat",
   "author": "Kjell-Morten Bratsberg Thorsen <post@kjellmorten.no> (http://kjellmorten.no)",
   "license": "ISC",
